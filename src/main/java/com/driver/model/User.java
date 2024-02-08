@@ -13,11 +13,17 @@ public class User {
     private int id;
 
     private String name;
+
     private String phoneNumber;
+
     private String password;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    List<Reservation> reservationList=new ArrayList<>();
+    List<Reservation> reservationList = new ArrayList<>();
+
+    // MAKE CONSTRUCTOR AND GETTER/SETTER
+    public User() {
+    }
 
     public User(int id, String name, String phoneNumber, String password, List<Reservation> reservationList) {
         this.id = id;
@@ -25,9 +31,6 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.reservationList = reservationList;
-    }
-
-    public User() {
     }
 
     public int getId() {

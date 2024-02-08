@@ -5,18 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="parkingLot")
+@Table(name = "parkingLot")
 public class ParkingLot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
+
     private String address;
 
     @OneToMany(mappedBy = "parkingLot",cascade = CascadeType.ALL)
-    List<Spot> spotList=new ArrayList<>();
+    List<Spot> spotList = new ArrayList<>();
+
+    // MAKE CONSTRUCTOR AND GETTER/SETTER
 
     public ParkingLot() {
+    }
+
+    public ParkingLot(int id, String name, String address, List<Spot> spotList) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.spotList = spotList;
     }
 
     public int getId() {
@@ -50,12 +62,4 @@ public class ParkingLot {
     public void setSpotList(List<Spot> spotList) {
         this.spotList = spotList;
     }
-
-    public ParkingLot(int id, String name, String address, List<Spot> spotList) {
-        this.id=id;
-        this.name = name;
-        this.address = address;
-        this.spotList = spotList;
-    }
-
 }

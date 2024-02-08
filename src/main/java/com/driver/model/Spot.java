@@ -9,19 +9,25 @@ import java.util.List;
 public class Spot {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Enumerated(value = EnumType.STRING)
+
+    @Enumerated(EnumType.STRING)
     private SpotType spotType;
+
     private int pricePerHour;
-    Boolean occupied=false;
+
+    private Boolean occupied;
 
     @ManyToOne
     @JoinColumn
     ParkingLot parkingLot;
 
     @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
-    List<Reservation> reservationList=new ArrayList<>();
+    List<Reservation> reservationList = new ArrayList<>();
+
+    // MAKE CONSTRUCTOR AND GETTER/SETTER
+
 
     public Spot() {
     }

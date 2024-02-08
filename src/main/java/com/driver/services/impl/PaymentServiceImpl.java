@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PaymentServicelmpl implements PaymentService {
+public class PaymentServiceImpl implements PaymentService {
     @Autowired
     ReservationRepository reservationRepository2;
     @Autowired
@@ -18,13 +18,12 @@ public class PaymentServicelmpl implements PaymentService {
 
     @Override
     public Payment pay(Integer reservationId, int amountSent, String mode) throws Exception {
-        Reservation reservation;
-        try {
-            reservation = reservationRepository2.findById(reservationId).get();
+        //Attempt a payment of amountSent for reservationId using the given mode ("cASh", "card", or "upi")
+        //If the amountSent is less than bill, throw "Insufficient Amount" exception, otherwise update payment attributes
+        //If the mode contains a string other than "cash", "card", or "upi" (any character in uppercase or lowercase), throw "Payment mode not detected" exception.
+        //Note that the reservationId always exists
 
-        }catch (Exception e){
-            throw new RuntimeException();
-        }
+        Reservation reservation = reservationRepository2.findById(reservationId).get();
         Payment payment = new Payment();
 
         // amount check and mode check

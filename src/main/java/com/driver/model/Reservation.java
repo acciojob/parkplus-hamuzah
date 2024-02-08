@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Reservation {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private int numberOfHours;
@@ -22,6 +22,8 @@ public class Reservation {
 
     @OneToOne(mappedBy = "reservation",cascade = CascadeType.ALL)
     Payment payment;
+
+    // MAKE CONSTRUCTOR AND GETTER/SETTER
 
     public Reservation() {
     }
